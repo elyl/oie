@@ -19,7 +19,7 @@ public class Game
 	p2 = new Player("Raymond");
 	this.addPlayer(p1);
 	this.addPlayer(p2);
-	while (i++ < 10)
+	while (!isGameFinished())
 	    playTurn(p1, throwDie() + throwDie());
     }
 
@@ -38,6 +38,11 @@ public class Game
 	    }
 	else
 	    System.out.println(p.getName() + " can't move this turn");
+    }
+
+    public boolean isGameFinished()
+    {
+	return (this.board.getCell(this.board.getBoardSize() - 1).getPlayer() != null);
     }
 
     public void addPlayer(Player p)
