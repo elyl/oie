@@ -39,8 +39,7 @@ public class Game
 	    {
 		index = p.getCell().getIndex() + diceThrow;
 		index = (index >= this.board.getBoardSize()) ? this.board.getBoardSize() - (diceThrow % this.board.getBoardSize()): index;
-		index = this.board.getCell(index).handleMove(diceThrow);
-		this.board.getCell(index).welcome(p);
+		this.board.getCell(this.board.getCell(index).handleMove(diceThrow)).welcome(p);
 		System.out.println("dicethrow: " + diceThrow + ";index: " + index);
 	    }
 	else
