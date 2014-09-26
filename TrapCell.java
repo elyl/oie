@@ -18,5 +18,10 @@ public class TrapCell extends AbstractCell
     public int handleMove(int diceThrow)
     {
 	return (index);
-    }    
+    }
+
+    public String toString()
+    {
+	return ("Trap cell " + index + " can't move until free'd");
+    }
 }

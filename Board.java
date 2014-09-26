@@ -14,13 +14,14 @@ public class Board
     {
 	this.boardSize = boardSize;
 	this.board = new Cell[boardSize];
+	this.board[0] = new StartCell();
     }
 
     public void resetBoard()
     {
 	int	i;
 	
-	i = 0;
+	i = 1;
 	while (i < this.boardSize)
 	    {
 		if (i == 2 || i == 11)

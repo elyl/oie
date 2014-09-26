@@ -1,7 +1,8 @@
 public class Player
 {
-    String	name;
-    Cell	cell;
+    private String	name;
+    private Cell	cell;
+    private int		waitTurns;
 
     public Player(String name)
     {
@@ -12,6 +13,26 @@ public class Player
     public void setCell(Cell newCell)
     {
 	this.cell = newCell;
+    }
+
+    public Cell getCell()
+    {
+	return (this.cell);
+    }
+
+    public void setWaitTurns(int nb)
+    {
+	this.waitTurns = nb;
+    }
+
+    public int getWaitTurns()
+    {
+	return (this.waitTurns);
+    }
+
+    public String getName()
+    {
+	return (this.name);
     }
 
     public String toString()

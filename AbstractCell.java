@@ -24,8 +24,21 @@ public abstract class AbstractCell implements Cell
 	return (this.player);
     }
 
+    public void movePlayer(Player p)
+    {
+	this.player = null;
+    }
+
     public void welcome(Player player)
     {
+	System.out.print(player + " is on " + player.getCell());
 	this.player = player;
+	player.setCell(this);
+	System.out.println(", moves to " + this.toString());
+    }
+
+    public String toString()
+    {
+	return ("cell " + index);
     }
 }

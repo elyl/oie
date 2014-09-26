@@ -17,6 +17,11 @@ public class GooseCell extends AbstractCell
 
     public int handleMove(int diceThrow)
     {
-	return (index + diceThrow);
-    }    
+	return (index + Game.throwDie() + Game.throwDie());
+    }
+
+    public String toString()
+    {
+	return ("Goose cell " + index + ", can throw the dice a second time");
+    }
 }

@@ -7,12 +7,12 @@ public class NormalCell extends AbstractCell
 
     public boolean canBeLeftNow()
     {
-	return (false);
+	return (true);
     }
 
     public boolean isRetaining()
     {
-	return (true);
+	return (false);
     }
 
     public int handleMove(int diceThrow)
