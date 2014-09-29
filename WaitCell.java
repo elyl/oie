@@ -5,7 +5,7 @@ public class WaitCell extends AbstractCell
     public WaitCell(int index)
     {
 	super(index);
-	this.nbTurns = 3;
+	this.nbTurns = 2;
     }
 
     public boolean canBeLeftNow()

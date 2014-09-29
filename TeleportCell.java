@@ -1,11 +1,11 @@
 public class TeleportCell extends AbstractCell
 {
-    private int	teleportationDistance;
+    private int	destination;
 
-    public TeleportCell(int index)
+    public TeleportCell(int index, int destination)
     {
 	super(index);
-	this.teleportationDistance = 10;
+	this.destination = destination;
     }
 
     public boolean canBeLeftNow()
@@ -20,11 +20,11 @@ public class TeleportCell extends AbstractCell
 
     public int handleMove(int diceThrow)
     {
-	return (index + teleportationDistance);
+	return (destination);
     }
 
     public String toString()
     {
-	return ("Teleport cell, teleports to " +  index + teleportationDistance);
+	return ("Teleport cell, teleports to " +  destination);
     }
 }

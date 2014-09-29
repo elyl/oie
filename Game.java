@@ -16,16 +16,9 @@ public class Game
 
     public void startNewGame()
     {
-	Player	p1;
-	Player	p2;
-	int	i;
-
-	i = 0;
 	this.board.resetBoard();
-	p1 = new Player("Roger");
-	p2 = new Player("Raymond");
-	this.addPlayer(p1);
-	this.addPlayer(p2);
+	this.addPlayer(new Player("Roger"));
+	this.addPlayer(new Player("Raymond"));
 	while (!isGameFinished())
 	    playTurn(nextPlayer(), throwDie() + throwDie());
     }
@@ -38,16 +31,20 @@ public class Game
 	p.setWaitTurns(p.getWaitTurns() - 1);
 	if (p.getCell().canBeLeftNow())
 	    {
-		index = p.getCell().getIndex() + diceThrow;
-		index = (index >= this.board.getBoardSize()) ? this.board.getBoardSize() - (diceThrow % this.board.getBoardSize()): index;
-		cell = this.board.getCell(this.board.getCell(index).handleMove(diceThrow));
+		index = verifyIndex(p.getCell().getIndex() + diceThrow);
+		cell = this.board.getCell(verifyIndex(this.board.getCell(index).handleMove(diceThrow)));
 		if (cell.isBusy())
 		    p.getCell().welcome(cell.getPlayer());
 		cell.welcome(p);
-		System.out.println("dicethrow: " + diceThrow + ";index: " + index);
+		System.out.println("dicethrow: " + diceThrow + "; index: " + index);
 	    }
 	else
 	    System.out.println(p.getName() + " can't move this turn");
+    }
+
+    public int verifyIndex(int index)
+    {
+	return ((index < this.board.getBoardSize()) ? index : index % this.board.getBoardSize());
     }
 
     public Player nextPlayer()
