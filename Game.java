@@ -33,13 +33,17 @@ public class Game
     public void playTurn(Player p, int diceThrow)
     {
 	int	index;
+	Cell	cell;
 
 	p.setWaitTurns(p.getWaitTurns() - 1);
 	if (p.getCell().canBeLeftNow())
 	    {
 		index = p.getCell().getIndex() + diceThrow;
 		index = (index >= this.board.getBoardSize()) ? this.board.getBoardSize() - (diceThrow % this.board.getBoardSize()): index;
-		this.board.getCell(this.board.getCell(index).handleMove(diceThrow)).welcome(p);
+		cell = this.board.getCell(this.board.getCell(index).handleMove(diceThrow));
+		if (cell.isBusy())
+		    p.getCell().welcome(cell.getPlayer());
+		cell.welcome(p);
 		System.out.println("dicethrow: " + diceThrow + ";index: " + index);
 	    }
 	else
